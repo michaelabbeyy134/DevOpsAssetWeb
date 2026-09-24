@@ -8,7 +8,6 @@ RUN dotnet restore "DevOpsAssetWeb.csproj"
 
 RUN dotnet publish "DevOpsAssetWeb.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
-
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 
 WORKDIR /app
