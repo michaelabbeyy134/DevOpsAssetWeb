@@ -1,0 +1,62 @@
+﻿@model List<DevOpsAssetWeb.Models.Asset>
+
+@{
+    ViewData["Title"] = "Assets";
+}
+
+<div class="container mt-4">
+    <h1>DevOps Assets</h1>
+
+    @if (Model.Count == 0)
+    {
+        <p>No assets found.</p>
+    }
+    else
+    {
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>IP Address</th>
+                    <th>Environment</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var asset in Model)
+                {
+                    <tr>
+                        <td>@asset.Id</td>
+                        <td>@asset.Name</td>
+                        <td>@asset.IPAddress</td>
+                        <td>@asset.Environment</td>
+                        <td>@asset.Status</td>
+                        <td>
+                            <a asp-action="Edit"
+                               asp-route-id="@asset.Id"
+                               class="btn btn-sm btn-primary">
+                                Edit
+                            </a>
+
+                            <form asp-action="Delete"
+                                  asp-route-id="@asset.Id"
+                                  method="post"
+                                  style="display:inline;"
+                                  onsubmit="return confirm('Are you sure you want to delete this asset?');">
+
+                                <button type="submit"
+                                        class="btn btn-sm btn-danger">
+                                    Delete
+                                </button>
+
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

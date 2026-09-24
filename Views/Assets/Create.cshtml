@@ -1,0 +1,45 @@
+﻿@model DevOpsAssetWeb.Models.Asset
+
+@{
+    ViewData["Title"] = "Create Asset";
+}
+
+<div class="container mt-4">
+    <h1>Create Asset</h1>
+
+    <form asp-action="Create" method="post">
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="IPAddress" class="form-label"></label>
+            <input asp-for="IPAddress" class="form-control" />
+            <span asp-validation-for="IPAddress" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Environment" class="form-label"></label>
+            <input asp-for="Environment" class="form-control" />
+            <span asp-validation-for="Environment" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Status" class="form-label"></label>
+            <input asp-for="Status" class="form-control" />
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Create Asset
+        </button>
+
+        <a asp-action="Index" class="btn btn-secondary">
+            Back to Assets
+        </a>
+
+    </form>
+</div>
